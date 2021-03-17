@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.toolbar.Adapters.PageAdapter;
 import com.example.toolbar.R;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("TAB 1"));
         tabLayout.addTab(tabLayout.newTab().setText("TAB 2"));
         tabLayout.addTab(tabLayout.newTab().setText("TAB 3"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        // tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
     }
 
     private void SetViewPager() {
@@ -46,18 +47,19 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                Toast.makeText(MainActivity.this, "Selected " + tab.getPosition(), Toast.LENGTH_SHORT).show();
                 int position = tab.getPosition();
                 viewPager.setCurrentItem(position);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                Toast.makeText(MainActivity.this, "Unselected " + tab.getPosition(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                Toast.makeText(MainActivity.this, "Reselected " + tab.getPosition(), Toast.LENGTH_SHORT).show();
             }
         });
     }
